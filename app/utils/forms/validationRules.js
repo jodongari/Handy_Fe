@@ -1,4 +1,4 @@
-import { exp } from "react-native-reanimated";
+import {exp} from 'react-native-reanimated';
 
 const validation = (value, rules, form) => {
   let valid = true;
@@ -6,7 +6,7 @@ const validation = (value, rules, form) => {
   for (let rule in rules) {
     switch (rule) {
       case 'isRequired':
-        valid = valid && validateRequired(value)
+        valid = valid && validateRequired(value);
         // console.log(valid)
         break;
       case 'isEmail':
@@ -48,7 +48,7 @@ const validateEmail = value => {
   return expression.test(String(value).toLocaleLowerCase());
 };
 
-const validateRequired = (value) => {
+const validateRequired = value => {
   return value !== '';
 };
 

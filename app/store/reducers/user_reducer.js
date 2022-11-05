@@ -16,6 +16,7 @@ export default function (state = {}, action) {
         auth: {
           userId: action.payload.localId || false,
           token: action.payload.idToken || false,
+          refToken: action.payload.refreshToken || false,
         },
       };
     default:

@@ -68,8 +68,8 @@ class AuthForm extends Component {
     console.warn(this.state.form);
   };
 
-  confirmPassword = () => (
-    this.state.type !== '로그인' ?
+  confirmPassword = () =>
+    this.state.type !== '로그인' ? (
       <Input
         value={this.state.form.confirmPassword.value}
         type={this.state.form.confirmPassword.type}
@@ -78,18 +78,14 @@ class AuthForm extends Component {
         placeholderTextColor="#ddd"
         onChangeText={value => this.updateInput('confirmPassword', value)}
       />
-      : null
-  )
+    ) : null;
 
-  formHasErrors = () => (
-    this.state.hasErrors ?
+  formHasErrors = () =>
+    this.state.hasErrors ? (
       <View style={styles.errorContainer}>
-        <Text style={styles.errorLabel}>
-          정꼬삼
-        </Text>
+        <Text style={styles.errorLabel}>정꼬삼</Text>
       </View>
-      : null
-  )
+    ) : null;
 
   changeForm = () => {
     const type = this.state.type;
@@ -97,7 +93,7 @@ class AuthForm extends Component {
     this.setState({
       type: type === '로그인' ? '등록' : '로그인',
       action: type === '로그인' ? '등록' : '로그인',
-      actionMode: type === '로그인' ? '로그인 화면으로' : '회원가입'
+      actionMode: type === '로그인' ? '로그인 화면으로' : '회원가입',
     });
   };
 
@@ -161,6 +157,7 @@ class AuthForm extends Component {
         {this.confirmPassword()}
         {this.formHasErrors()}
 
+        {/* eslint-disable-next-line react-native/no-inline-styles */}
         <View style={{marginTop: 40}}>
           <View style={styles.button}>
             <Button
@@ -229,3 +226,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);
+
