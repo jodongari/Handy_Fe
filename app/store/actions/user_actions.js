@@ -1,6 +1,6 @@
 import {SIGN_IN, SIGN_UP} from '../types';
 
-//import axios from 'axios';
+import axios from 'axios';
 import {SIGNUP} from '../../utils/misc';
 
 export function signIn(data) {
