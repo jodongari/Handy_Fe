@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 import AuthLogo from './authLogo';
 import AuthForm from './authForm';
+import {getTokens, setTokens} from '../../utils/misc';
 
 class AuthComponent extends Component {
   state = {
@@ -28,6 +29,9 @@ class AuthComponent extends Component {
     this.props.navigation.navigate('AppTabComponent');
   };
 
+  componentDidMount() {
+    getTokens();
+  }
   render() {
     if (this.state.loading) {
       return (
