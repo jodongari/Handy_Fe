@@ -19,14 +19,16 @@ export const setTokens = async (values, callBack) => {
   }
 };
 
-export const getTokens = async () => {
+export const getTokens = async callBack => {
   let values;
   try {
     values = await AsyncStorage.multiGet([
       '@handy@userId',
       '@handy@token',
       '@handy@refToken',
-    ]);
+    ]).then(values => {
+      callBack(values);
+    });
   } catch (e) {
     // read error
   }

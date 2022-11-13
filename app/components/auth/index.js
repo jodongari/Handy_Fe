@@ -19,6 +19,9 @@ import {
 import AuthLogo from './authLogo';
 import AuthForm from './authForm';
 import {getTokens, setTokens} from '../../utils/misc';
+import {autoSignIn} from '../../store/actions/user_actions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 class AuthComponent extends Component {
   state = {
@@ -30,8 +33,29 @@ class AuthComponent extends Component {
   };
 
   componentDidMount() {
-    getTokens();
+    /*
+    value.....
+          ['@winthiary_app@userId', 'aefgdg...']
+          ['@winthidary_app@token', 'awoeigwWEwgk...']
+          ['@winthidary_app@refToken', 'Asrgsioha...']
+    */
+    getTokens(value => {
+      if (value[1][1] !== null) {
+        this.props.autoSignIn(value[2][1]).then(() => {
+          if (this.props.User.auth.token) {
+            setTokens(this.props.User.auth, () => {
+              this.goWithoutLogin();
+            });
+          }
+        });
+      }
+    });
+
+    this.props.navigation.addListener('beforeRemove', e => {
+      e.preventDefault();
+    });
   }
+
   render() {
     if (this.state.loading) {
       return (
@@ -68,4 +92,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AuthComponent;
+function mapStateToProps(state) {
+  return {
+    User: state.User,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({autoSignIn}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthComponent);
