@@ -21,12 +21,11 @@ const MainScreenTab = createBottomTabNavigator();
             - Tab Screen C
 */
 
-const isLoggedIn = true;
+const isLoggedIn = false;
 
 const AppTabComponent = () => {
   return (
     <MainScreenTab.Navigator>
-      <MainScreenTab.Screen name="signIn" component={SignIn} />
       <MainScreenTab.Screen name="store" component={Store} />
       <MainScreenTab.Screen name="News" component={News} />
     </MainScreenTab.Navigator>

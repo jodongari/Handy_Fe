@@ -92,14 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps(state) {
-  return {
-    User: state.User,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({autoSignIn}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AuthComponent);
+export default AuthComponent;
