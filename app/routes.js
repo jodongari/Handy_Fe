@@ -7,9 +7,28 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SignIn from './components/auth';
 import Store from './components/store';
 import News from './components/news';
+import Diary from './components/diary';
+
+import DiaryDocu from './components/diary/diaryDocu';
+import Logo from './utils/logo';
 
 const AuthStack = createStackNavigator();
 const MainScreenTab = createBottomTabNavigator();
+const DiaryStack = createStackNavigator();
+const StoreStack = createStackNavigator();
+
+const headerConfig = {
+  headerTitleAlign: 'center',
+  headerTintColor: '#fff',
+  headerStyle: {
+    backgroundColor: '#7487C5',
+  },
+  headerTitle: <Logo />,
+  headerTitleStyle: {
+    flex: 1,
+    textAlign: 'center',
+  },
+};
 
 /*
     Stack Navigator
@@ -21,12 +40,42 @@ const MainScreenTab = createBottomTabNavigator();
             - Tab Screen C
 */
 
-const isLoggedIn = false;
+const isLoggedIn = true;
+
+const DiaryStackComponent = () => {
+  return (
+    <DiaryStack.Navigator>
+      <DiaryStack.Screen
+        name="Diary"
+        component={Diary}
+        options={headerConfig}
+      />
+      <DiaryStack.Screen
+        name="DiaryDocu"
+        component={DiaryDocu}
+        options={headerConfig}
+      />
+    </DiaryStack.Navigator>
+  );
+};
+
+const StoreStackComponent = () => {
+  return (
+    <StoreStack.Navigator>
+      <StoreStack.Screen
+        name="Store"
+        component={Store}
+        options={headerConfig}
+      />
+    </StoreStack.Navigator>
+  );
+};
 
 const AppTabComponent = () => {
   return (
     <MainScreenTab.Navigator>
-      <MainScreenTab.Screen name="store" component={Store} />
+      <MainScreenTab.Screen name="diary" component={DiaryStackComponent} />
+      <MainScreenTab.Screen name="store" component={StoreStackComponent} />
       <MainScreenTab.Screen name="News" component={News} />
     </MainScreenTab.Navigator>
   );
