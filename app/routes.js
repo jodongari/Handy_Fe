@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 //Screens
 import SignIn from './components/auth';
-import Diary from './components/diary';
+import Store from './components/store';
 import News from './components/news';
 
 const AuthStack = createStackNavigator();
@@ -21,13 +21,14 @@ const MainScreenTab = createBottomTabNavigator();
             - Tab Screen C
 */
 
-const isLoggedIn = false;
+const isLoggedIn = true;
 
 const AppTabComponent = () => {
   return (
     <MainScreenTab.Navigator>
-      <MainScreenTab.Screen name="Diary" component={Diary}/>
-      <MainScreenTab.Screen name="News" component={News}/>
+      <MainScreenTab.Screen name="signIn" component={SignIn} />
+      <MainScreenTab.Screen name="store" component={Store} />
+      <MainScreenTab.Screen name="News" component={News} />
     </MainScreenTab.Navigator>
   );
 };
@@ -36,7 +37,7 @@ export const RootNavigator = () => {
   return (
     <AuthStack.Navigator screenOptions={{headerShown: false}}>
       {isLoggedIn ? (
-        <AuthStack.Screen name="Main" component={AppTabComponent}/>
+        <AuthStack.Screen name="Main" component={AppTabComponent} />
       ) : (
         <>
           <AuthStack.Screen name="SignIn" component={SignIn} />

@@ -11,11 +11,13 @@ import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
-class DiaryComponent extends Component {
+class StoreComponent extends Component {
+  StoreList = {};
+
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>Diary Screen</Text>
+        <Text>store Screen</Text>
       </View>
     );
   }
@@ -23,4 +25,4 @@ class DiaryComponent extends Component {
 
 const styles = StyleSheet.create({});
 
-export default DiaryComponent;
+export default StoreComponent;
