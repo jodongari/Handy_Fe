@@ -10,6 +10,7 @@ import News from './components/news';
 import Diary from './components/diary';
 
 import DiaryDocu from './components/diary/diaryDocu';
+import StoreDocu from './components/store/storeDocu';
 import Logo from './utils/logo';
 
 const AuthStack = createStackNavigator();
@@ -62,9 +63,14 @@ const DiaryStackComponent = () => {
 const StoreStackComponent = () => {
   return (
     <StoreStack.Navigator>
-      <StoreStack.Screen
+      <DiaryStack.Screen
         name="Store"
         component={Store}
+        options={headerConfig}
+      />
+      <StoreStack.Screen
+        name="StoreDocu"
+        component={StoreDocu}
         options={headerConfig}
       />
     </StoreStack.Navigator>
