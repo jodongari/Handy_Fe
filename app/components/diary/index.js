@@ -30,56 +30,61 @@ class DiaryComponent extends Component {
   }
 
   renderDiary = Diaries =>
-    Diaries.documents.map((item, index) => (
-      <TouchableOpacity key={index}>
-        <View style={styles.diaryContainer}>
-          <View style={{height: 160}}>
-            {item.data.imagePath ? (
-              <View style={styles.indexView}>
-                <Text style={{fontSize: 17, fontWeight: 'bold'}}>
-                  # {index + 1}
-                </Text>
-                <Image
-                  source={require('../../assets/images/image.png')}
-                  resizeMethod={'contain'}
-                  style={{width: 20, height: 20}}
-                />
-              </View>
-            ) : (
-              <View style={{paddingTop: 7, paddingLeft: 7}}>
-                <Text style={{fontSize: 17, fontWeight: 'bold'}}>
-                  # {index + 1}
-                </Text>
-              </View>
-            )}
+    Diaries.documents
+      ? Diaries.documents.map((item, index) => (
+          <TouchableOpacity key={index}>
+            <View style={styles.diaryContainer}>
+              <View style={{height: 160}}>
+                {item.data.imagePath ? (
+                  <View style={styles.indexView}>
+                    <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+                      # {index + 1}
+                    </Text>
+                    <Image
+                      source={require('../../assets/images/image.png')}
+                      resizeMethod={'contain'}
+                      style={{width: 20, height: 20}}
+                    />
+                  </View>
+                ) : (
+                  <View style={{paddingTop: 7, paddingLeft: 7}}>
+                    <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+                      # {index + 1}
+                    </Text>
+                  </View>
+                )}
 
-            {item.data.date ? (
-              <View style={styles.dateView}>
-                <Text style={{fontSize: 16, fontWeight: 'bold'}}>Date: </Text>
-                <Text style={{fontSize: 16}}>{item.data.date}</Text>
-              </View>
-            ):null}
+                {item.data.date ? (
+                  <View style={styles.dateView}>
+                    <Text style={{fontSize: 16, fontWeight: 'bold'}}>
+                      Date:{' '}
+                    </Text>
+                    <Text style={{fontSize: 16}}>{item.data.date}</Text>
+                  </View>
+                ) : null}
 
-            {item.data.title ? (
-              <View style={styles.dateView}>
-                <Text style={{fontSize: 16, fontWeight: 'bold'}}>Title: </Text>
-                <Text style={{fontSize: 16}}>{item.data.title}</Text>
-              </View>
-            ):null}
+                {item.data.title ? (
+                  <View style={styles.dateView}>
+                    <Text style={{fontSize: 16, fontWeight: 'bold'}}>
+                      Title:{' '}
+                    </Text>
+                    <Text style={{fontSize: 16}}>{item.data.title}</Text>
+                  </View>
+                ) : null}
 
-            {item.data.description ? (
-              <View style={{paddingTop: 7, paddingLeft: 7}}>
-                <Text style={{fontSize: 16, fontWeight: 'bold'}}>
-                  Description:{' '}
-                </Text>
-                <Text style={{fontSize: 16}}>{item.data.description}</Text>
+                {item.data.description ? (
+                  <View style={{paddingTop: 7, paddingLeft: 7}}>
+                    <Text style={{fontSize: 16, fontWeight: 'bold'}}>
+                      Description:{' '}
+                    </Text>
+                    <Text style={{fontSize: 16}}>{item.data.description}</Text>
+                  </View>
+                ) : null}
               </View>
-            ):null}
-
-          </View>
-        </View>
-      </TouchableOpacity>
-    ));
+            </View>
+          </TouchableOpacity>
+        ))
+      : null;
 
   render() {
     return (
