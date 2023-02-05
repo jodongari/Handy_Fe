@@ -63,7 +63,7 @@ const DiaryStackComponent = () => {
 const StoreStackComponent = () => {
   return (
     <StoreStack.Navigator>
-      <DiaryStack.Screen
+      <StoreStack.Screen
         name="Store"
         component={Store}
         options={headerConfig}

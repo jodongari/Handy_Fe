@@ -3,3 +3,4 @@ export const SIGN_UP = 'sign_up';
 export const AUTO_SIGN_IN = 'auto_sign_in';
 export const GET_STORES = 'get_stores';
 export const GET_DIARIES = 'get_diaries';
+export const REGISTER_STORE = 'register_store';

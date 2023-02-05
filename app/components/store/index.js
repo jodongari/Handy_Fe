@@ -53,7 +53,7 @@ class StoreComponent extends Component {
                   </View>
                 ) : null}
 
-                {item.ownerSeq ? (
+                {item.ownerSeq != null ? (
                   <View style={{paddingTop: 7, paddingLeft: 7}}>
                     <Text style={{fontSize: 16, fontWeight: 'bold'}}>
                       ownerSeq:{' '}
