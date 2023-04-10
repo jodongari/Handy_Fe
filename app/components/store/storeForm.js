@@ -37,7 +37,7 @@ class StoreForm extends Component {
     hasErrors: false,
     form: {
       ownerSeq: {
-        value: '',
+        value: '1',
         type: 'text-input',
         rules: {
           isRequired: true,
@@ -45,7 +45,7 @@ class StoreForm extends Component {
         valid: true,
       },
       name: {
-        value: '',
+        value: 'apiTest',
         type: 'text-input',
         rules: {
           isRequired: true,
@@ -177,12 +177,12 @@ class StoreForm extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{backgroundColor: '#ddd'}}>
         <Input
           value={this.state.form.ownerSeq.value}
           type={this.state.form.ownerSeq.type}
           placeholder="ownerSeq"
-          placeholderTextColor="#ddd"
+          placeholderTextColor="#fff"
           onChangeText={value => this.updateInput('ownerSeq', value)}
         />
 
@@ -190,7 +190,7 @@ class StoreForm extends Component {
           value={this.state.form.name.value}
           type={this.state.form.name.type}
           placeholder="name"
-          placeholderTextColor="#ddd"
+          placeholderTextColor="#fff"
           onChangeText={value => this.updateInput('name', value)}
         />
 
@@ -333,7 +333,7 @@ class StoreForm extends Component {
     for (let key in formCopy) {
       submittedForm[key] = formCopy[key].value;
     }
-    this.props.registerStore(submittedForm);
+    this.props.registerStore(submittedForm).then(() => {});
   };
 
   updateInput = (name, value) => {

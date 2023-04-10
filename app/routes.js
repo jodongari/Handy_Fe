@@ -6,7 +6,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 //Screens
 import SignIn from './components/auth';
 import Store from './components/store';
-import News from './components/news';
 import Diary from './components/diary';
 
 import DiaryDocu from './components/diary/diaryDocu';
@@ -20,13 +19,11 @@ const StoreStack = createStackNavigator();
 
 const headerConfig = {
   headerTitleAlign: 'center',
-  headerTintColor: '#fff',
+  headerTintColor: '#000',
   headerStyle: {
-    backgroundColor: '#7487C5',
+    backgroundColor: '#fff',
   },
-  headerTitle: <Logo />,
   headerTitleStyle: {
-    flex: 1,
     textAlign: 'center',
   },
 };
@@ -79,10 +76,9 @@ const StoreStackComponent = () => {
 
 const AppTabComponent = () => {
   return (
-    <MainScreenTab.Navigator>
-      <MainScreenTab.Screen name="diary" component={DiaryStackComponent} />
+    <MainScreenTab.Navigator screenOptions={{headerShown: false}}>
+      <MainScreenTab.Screen name="Diary" component={DiaryStackComponent} />
       <MainScreenTab.Screen name="store" component={StoreStackComponent} />
-      <MainScreenTab.Screen name="News" component={News} />
     </MainScreenTab.Navigator>
   );
 };

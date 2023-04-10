@@ -2,6 +2,8 @@ import {GET_STORES, REGISTER_STORE} from '../types';
 import axios from 'axios';
 
 export function getStores() {
+  console.log('get stores!!!!!');
+
   const request = axios({
     method: 'GET',
     url: 'http://localhost:8080/api/stores/get/0',
@@ -9,6 +11,7 @@ export function getStores() {
     .then(response => {
       const storeDate = [];
       console.log(response.data);
+      console.log(`[cowkite2] ${JSON.stringify(response.data)}`);
       for (let key in response.data) {
         if (response.data[key]) {
           storeDate.push(response.data[key]);
@@ -28,14 +31,14 @@ export function getStores() {
 }
 
 export function registerStore(data) {
-  console.log('test start');
+  console.log('registerStore !!!! ');
   console.log(data);
   const request = axios({
     method: 'POST',
     url: 'http://localhost:8080/api/store/register',
     data: {
-      ownerSeq: data.ownerSeq,
-      name: data.name,
+      ownerSeq: 1,
+      name: 'test',
       businessName: 'test', //data.businessName,
       businessReportCardImageUrl: 'test', //data.businessReportCardImageUrl,
       businessLicenseImageUrl: 'test', //data.businessLicenseImageUrl,

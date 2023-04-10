@@ -99,7 +99,7 @@ class DiaryComponent extends Component {
             top: screenHeight * 0.7,
           }}
           onPress={() => {
-            this.props.navigation.navigate('diaryDocu', {
+            this.props.navigation.navigate('DiaryDocu', {
               newDiary: true,
             });
           }}>
